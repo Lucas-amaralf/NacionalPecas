@@ -9,7 +9,9 @@ document.getElementById('toggleSidebar').addEventListener('click', function() {
 
 document.querySelectorAll('.sub-menu li a').forEach(item => {
     item.addEventListener('click', function() {
-        toggleSidebar();
+        if (window.innerWidth <= 768) {  // Define o limite para telas pequenas
+            toggleSidebar();
+        }
     });
 });
 
