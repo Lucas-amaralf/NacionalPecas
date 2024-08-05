@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Peças</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo">NACIONAL</div>
+        <nav class="nav-links">
+            <ul>
+                <li>
+                    <a href="#" onclick="toggleSubMenu('induzidoSubMenu')"><i class='fas fa-car-alt'></i> Induzido</a>
+                    <ul class="sub-menu" id="induzidoSubMenu">
+                        <li><a href="#" onclick="showSection('induzidoPesquisa')">Pesquisar</a></li>
+                        <li><a href="#" onclick="showSection('induzidoCriar')">Criar</a></li>
+                        <li><a href="#" onclick="showSection('induzidoDeletar')">Deletar</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu('rotorSubMenu')"><i class="fas fa-truck-monster"></i> Rotor</a>
+                    <ul class="sub-menu" id="rotorSubMenu">
+                        <li><a href="#" onclick="showSection('rotorPesquisa')">Pesquisar</a></li>
+                        <li><a href="#" onclick="showSection('rotorCriar')">Criar</a></li>
+                        <li><a href="#" onclick="showSection('rotorDeletar')">Deletar</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu('estatorSubMenu')"><i class="fas fa-truck-pickup"></i> Estator</a>
+                    <ul class="sub-menu" id="estatorSubMenu">
+                        <li><a href="#" onclick="showSection('estatorPesquisa')">Pesquisar</a></li>
+                        <li><a href="#" onclick="showSection('estatorCriar')">Criar</a></li>
+                        <li><a href="#" onclick="showSection('estatorDeletar')">Deletar</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header class="header">
+            <h1>Portal de Peças</h1>
+            <!-- Botão para alternar a barra lateral -->
+            <button id="toggleSidebar" class="toggle-sidebar-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+        <div class="content" id="content">
+            <!-- Induzido -->
+            <div id="induzidoPesquisa" class="section hidden">
+                <h2>Pesquisar Induzido</h2>
+                <form id="searchFormInduzido" class="search-form">
+                    <div class="form-group">
+                        <label for="marcaInduzido">Marca:</label>
+                        <select id="marcaInduzido" name="marcaInduzido" class="input-field">
+                            <option value="BOSCH">BOSCH</option>
+                            <option value="DELCO">DELCO</option>
+                            <option value="DENSO">DENSO</option>
+                            <option value="HITACHI">HITACHI</option>
+                            <option value="PRESTOLITE">PRESTOLITE</option>
+                            <option value="ISKRA">ISKRA</option>
+                            <option value="MARELLI">MARELLI</option>
+                            <option value="MITSUBISHI">MITSUBISHI</option>
+                            <option value="MOTOCRAFT">MOTOCRAFT</option>
+                            <option value="COMSTAR">COMSTAR</option>
+                            <option value="VALEO">VALEO</option>
+                            <option value="DESCONHECIDO">DESCONHECIDO</option>
+                          </select>
+                        <br>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="comprimentoMinInduzido">Comprimento Mínimo:</label>
+                            <input type="number" step="0.1" id="comprimentoMinInduzido" class="input-field" placeholder="Comprimento Mínimo">
+                        </div>
+                        <div class="form-group">
+                            <label for="comprimentoMaxInduzido">Comprimento Máximo:</label>
+                            <input type="number" step="0.1" id="comprimentoMaxInduzido" class="input-field" placeholder="Comprimento Máximo">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dentesInduzido">Quantidade de Dentes:</label>
+                        <input type="number" id="dentesInduzido" class="input-field" placeholder="Quantidade de Dentes">
+                    </div>
+                    <button type="button" class="search-button" onclick="searchInduzidos()">Pesquisar</button>
+                </form>
+                <div id="resultsInduzido" class="results"></div>
+            </div>
+            <div id="induzidoCriar" class="section hidden">
+                <h2>Criar Induzido</h2>
+                <form id="createFormInduzido" class="create-form">
+                    <div class="form-group">
+                        <label for="createIDInduzido">ID:</label>
+                        <input type="text" id="createIDInduzido" class="input-field" placeholder="ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createMarcaInduzido">Marca:</label>
+                        <select id="createMarcaInduzido" name="createMarcaInduzido" class="input-field" required>
+                            <option value="BOSCH">BOSCH</option>
+                            <option value="DELCO">DELCO</option>
+                            <option value="DENSO">DENSO</option>
+                            <option value="HITACHI">HITACHI</option>
+                            <option value="PRESTOLITE">PRESTOLITE</option>
+                            <option value="ISKRA">ISKRA</option>
+                            <option value="MARELLI">MARELLI</option>
+                            <option value="MITSUBISHI">MITSUBISHI</option>
+                            <option value="MOTOCRAFT">MOTOCRAFT</option>
+                            <option value="COMSTAR">COMSTAR</option>
+                            <option value="VALEO">VALEO</option>
+                            <option value="DESCONHECIDO">DESCONHECIDO</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="createColetorInduzido">Coletor:</label>
+                        <input type="number" step="0.1" id="createColetorInduzido" class="input-field" placeholder="Diametro do coletor" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createComprimentoInduzido">Comprimento:</label>
+                        <input type="number" step="0.1" id="createComprimentoInduzido" class="input-field" placeholder="Comprimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDiametroInduzido">Diametro:</label>
+                        <input type="number" step="0.1" id="createDiametroInduzido" class="input-field" placeholder="Diametro" required>
+                    </div>          
+                    <div class="form-group">
+                        <label for="createDentesInduzido">Quantidade de Dentes:</label>
+                        <input type="number" id="createDentesInduzido" class="input-field" placeholder="Quantidade de Dentes" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDentesInduzido">Voltagem:</label>
+                        <input type="number" id="createVoltagemInduzido" class="input-field" placeholder="Voltagem" required>
+                    </div>
+                    <button type="button" class="create-button" onclick="createInduzido()">Criar</button>
+                </form>
+                <div id="createResultInduzido" class="results"></div>
+            </div>
+            <div id="induzidoDeletar" class="section hidden">
+                <h2>Deletar Induzido</h2>
+                <form id="deleteFormInduzido" class="delete-form">
+                    <div class="form-group">
+                        <label for="deleteIdInduzido">ID do Induzido:</label>
+                        <input type="text" id="deleteIdInduzido" class="input-field" placeholder="ID do Induzido" required>
+                    </div>
+                    <button type="button" class="delete-button" onclick="deleteInduzido()">Deletar</button>
+                </form>
+                <div id="deleteResultInduzido" class="results"></div>
+            </div>
+
+            <!-- Rotor -->
+            <div id="rotorPesquisa" class="section hidden">
+                <h2>Pesquisar Rotor</h2>
+                <form id="searchFormRotor" class="search-form">
+                    <div class="form-group">
+                        <label for="marcaRotor">Marca:</label>
+                        <select id="marcaRotor" name="marcaRotor" class="input-field" required>
+                            <option value="BOSCH">BOSCH</option>
+                            <option value="DELCO">DELCO</option>
+                            <option value="DENSO">DENSO</option>
+                            <option value="HITACHI">HITACHI</option>
+                            <option value="PRESTOLITE">PRESTOLITE</option>
+                            <option value="ISKRA">ISKRA</option>
+                            <option value="MARELLI">MARELLI</option>
+                            <option value="MITSUBISHI">MITSUBISHI</option>
+                            <option value="MOTOCRAFT">MOTOCRAFT</option>
+                            <option value="COMSTAR">COMSTAR</option>
+                            <option value="VALEO">VALEO</option>
+                            <option value="DESCONHECIDO">DESCONHECIDO</option>
+                          </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="comprimentoMinRotor">Comprimento Mínimo:</label>
+                            <input type="number" step="0.1" id="comprimentoMinRotor" class="input-field" placeholder="Comprimento Mínimo">
+                        </div>
+                        <div class="form-group">
+                            <label for="comprimentoMaxRotor">Comprimento Máximo:</label>
+                            <input type="number" step="0.1" id="comprimentoMaxRotor" class="input-field" placeholder="Comprimento Máximo">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="diametroMinRotor">Diâmetro Mínimo:</label>
+                        <input type="number" step="0.1" id="diametroMinRotor" class="input-field" placeholder="Diâmetro Mínimo">
+                    </div>
+                    <div class="form-group">
+                        <label for="diametroMaxRotor">Diâmetro Máximo:</label>
+                        <input type="number" step="0.1" id="diametroMaxRotor" class="input-field" placeholder="Diâmetro Máximo">
+                    </div>
+                    </div>
+                    <button type="button" class="search-button" onclick="searchRotores()">Pesquisar</button>
+                </form>
+                <div id="resultsRotor" class="results-container"></div>
+            </div>
+            <div id="rotorCriar" class="section hidden">
+                <h2>Criar Rotor</h2>
+                <form id="createFormRotor" class="create-form">
+                    <div class="form-group">
+                        <label for="createMarcaRotor">ID:</label>
+                        <input type="text" id="createIDRotor" class="input-field" placeholder="ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createMarcaRotor">Marca:</label>
+                        <select id="createMarcaRotor" name="createMarcaRotor" class="input-field" required>
+                            <option value="BOSCH">BOSCH</option>
+                            <option value="DELCO">DELCO</option>
+                            <option value="DENSO">DENSO</option>
+                            <option value="HITACHI">HITACHI</option>
+                            <option value="PRESTOLITE">PRESTOLITE</option>
+                            <option value="ISKRA">ISKRA</option>
+                            <option value="MARELLI">MARELLI</option>
+                            <option value="MITSUBISHI">MITSUBISHI</option>
+                            <option value="MOTOCRAFT">MOTOCRAFT</option>
+                            <option value="COMSTAR">COMSTAR</option>
+                            <option value="VALEO">VALEO</option>
+                            <option value="DESCONHECIDO">DESCONHECIDO</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="createColetorRotor">Coletor:</label>
+                        <input type="number" step="0.1" id="createColetorRotor" class="input-field" placeholder="Coletor" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createComprimentoRotor">Comprimento:</label>
+                        <input type="number" step="0.1" id="createComprimentoRotor" class="input-field" placeholder="Comprimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDiametroRotor">Diâmetro:</label>
+                        <input type="number" step="0.1" id="createDiametroRotor" class="input-field" placeholder="Diâmetro" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createMontagemRotor">Montagem:</label>
+                        <input type="number" id="createMontagemRotor" class="input-field" placeholder="Montagem" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createMarcaRotor">Helice:</label>
+                        <select id="createHeliceRotor" name="createHeliceRotor" class="input-field" >
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="createMontagemRotor">Voltagem:</label>
+                        <input type="number" id="createVoltagemRotor" class="input-field" placeholder="Voltagem" required>
+                    </div>
+                    <button type="button" class="create-button" onclick="createRotor()">Criar</button>
+                </form>
+                <div id="createResultRotor" class="results"></div>
+            </div>
+            <div id="rotorDeletar" class="section hidden">
+                <h2>Deletar Rotor</h2>
+                <form id="deleteFormRotor" class="delete-form">
+                    <div class="form-group">
+                        <label for="deleteIdRotor">ID do Rotor:</label>
+                        <input type="text" id="deleteIdRotor" class="input-field" placeholder="ID do Rotor" required>
+                    </div>
+                    <button type="button" class="delete-button" onclick="deleteRotor()">Deletar</button>
+                </form>
+                <div id="deleteResultRotor" class="results"></div>
+            </div>
+
+            <!-- Estator -->
+            <div id="estatorPesquisa" class="section hidden">
+                <h2>Pesquisar Estator</h2>
+                <form id="searchFormEstator" class="search-form">
+                    <div class="form-group">
+                        <label for="marcaEstator">Marca:</label>
+                        <select id="marcaEstator" name="marcaEstator" class="input-field" required>
+                            <option value="BOSCH">BOSCH</option>
+                            <option value="DELCO">DELCO</option>
+                            <option value="DENSO">DENSO</option>
+                            <option value="HITACHI">HITACHI</option>
+                            <option value="PRESTOLITE">PRESTOLITE</option>
+                            <option value="ISKRA">ISKRA</option>
+                            <option value="MARELLI">MARELLI</option>
+                            <option value="MITSUBISHI">MITSUBISHI</option>
+                            <option value="MOTOCRAFT">MOTOCRAFT</option>
+                            <option value="COMSTAR">COMSTAR</option>
+                            <option value="VALEO">VALEO</option>
+                            <option value="DESCONHECIDO">DESCONHECIDO</option>
+                          </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="diametroInternoMinEstator">Diâmetro Interno Mínimo:</label>
+                            <input type="number" step="0.1" id="diametroInternoMinEstator" class="input-field" placeholder="Diâmetro Interno Mínimo">
+                        </div>
+                        <div class="form-group">
+                            <label for="diametroInternoMaxEstator">Diâmetro Interno Máximo:</label>
+                            <input type="number" step="0.1" id="diametroInternoMaxEstator" class="input-field" placeholder="Diâmetro Interno Máximo">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="diametroExternoMinEstator">Diâmetro Externo Mínimo:</label>
+                            <input type="number" step="0.1" id="diametroExternoMinEstator" class="input-field" placeholder="Diâmetro Externo Mínimo">
+                        </div>
+                        <div class="form-group">
+                            <label for="diametroExternoMaxEstator">Diâmetro Externo Máximo:</label>
+                            <input type="number" step="0.1" id="diametroExternoMaxEstator" class="input-field" placeholder="Diâmetro Externo Máximo">
+                        </div>
+                    </div>
+                    <button type="button" class="search-button" onclick="searchEstatores()">Pesquisar</button>
+                </form>
+                <div id="resultsEstator" class="results-container"></div>
+            </div>
+            <div id="estatorCriar" class="section hidden">
+                <h2>Criar Estator</h2>
+                <form id="createFormEstator" class="create-form">
+                    <div class="form-group">
+                        <label for="createMarcaEstator">ID:</label>
+                        <input type="text" id="createIDEstator" class="input-field" placeholder="ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createMarcaEstator">Marca:</label>
+                        <select id="createMarcaEstator" name="createMarcaEstator" class="input-field" required>
+                            <option value="BOSCH">BOSCH</option>
+                            <option value="DELCO">DELCO</option>
+                            <option value="DENSO">DENSO</option>
+                            <option value="HITACHI">HITACHI</option>
+                            <option value="PRESTOLITE">PRESTOLITE</option>
+                            <option value="ISKRA">ISKRA</option>
+                            <option value="MARELLI">MARELLI</option>
+                            <option value="MITSUBISHI">MITSUBISHI</option>
+                            <option value="MOTOCRAFT">MOTOCRAFT</option>
+                            <option value="COMSTAR">COMSTAR</option>
+                            <option value="VALEO">VALEO</option>
+                            <option value="DESCONHECIDO">DESCONHECIDO</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDiametroExternoEstator">Diâmetro Externo:</label>
+                        <input type="number" step="0.1" id="createDiametroExternoEstator" class="input-field" placeholder="Diâmetro Externo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDiametroInternoEstator">Diâmetro Interno:</label>
+                        <input type="number" step="0.1" id="createDiametroInternoEstator" class="input-field" placeholder="Diâmetro Interno" required>
+                    </div>   
+                    <div class="form-group">
+                        <label for="createPacoteEstator">Pacote:</label>
+                        <input type="number" step="0.1" id="createPacoteEstator" class="input-field" placeholder="Pacote" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createFiosEstator">Quantidade de Fios:</label>
+                        <input type="number" step="0.1" id="createFiosEstator" class="input-field" placeholder="Fios" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createVoltagemEstator">Voltagem:</label>
+                        <input type="number" step="0.1" id="createVoltagemEstator" class="input-field" placeholder="Voltagem" required>
+                    </div>
+                    <button type="button" class="create-button" onclick="createEstator()">Criar</button>
+                </form>
+                <div id="createResultEstator" class="results"></div>
+            </div>
+            <div id="estatorDeletar" class="section hidden">
+                <h2>Deletar Estator</h2>
+                <form id="deleteFormEstator" class="delete-form">
+                    <div class="form-group">
+                        <label for="deleteIdEstator">ID do Estator:</label>
+                        <input type="text" id="deleteIdEstator" class="input-field" placeholder="ID do Estator" required>
+                    </div>
+                    <button type="button" class="delete-button" onclick="deleteEstator()">Deletar</button>
+                </form>
+                <div id="deleteResultEstator" class="results"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
